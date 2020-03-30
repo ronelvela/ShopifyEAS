@@ -127,7 +127,8 @@ app.get('/shopify/callback', asyncMiddleware(async function (req, res) {
             res.status(200).end({ shop: JSON.parse(shop_shopify.res), order: { err: true, err_des: shop_shopify.err.error } });
             return
         }
-        res.json({ shop: JSON.parse(shop_shopify.res.shop), orders: JSON.parse(order_shopify.res.orders) });
+
+        res.json({ shop: JSON.parse(shop_shopify.res).shop, orders: JSON.parse(order_shopify.res).orders });
     } else {
         res.status(400).send('Required parameters missing');
     }
