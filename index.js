@@ -52,7 +52,6 @@ const get_accesstoken = (accessTokenRequestUrl, accessTokenPayload) => {
             .then((accessTokenResponse) => {
                 const accessToken = accessTokenResponse.access_token;
                 // DONE: Use access token to make API call to 'shop' endpoint
-                console.log(accessToken);
                 resolve({ access_token: accessToken })
             })
             .catch((error) => {
@@ -124,12 +123,11 @@ app.get('/shopify/callback', asyncMiddleware(async function (req, res) {
         }
         shopRequestUrl = 'https://' + shop + '/admin/api/2020-01/orders.json';
         const order_shopify = await get_data(shopRequestUrl, shopRequestHeaders);
-        console.log(order_shopify);
         if (order_shopify.err) {
             res.status(200).end({ shop: JSON.parse(shop_shopify.res), order: { err: true, err_des: shop_shopify.err.error } });
             return
         }
-        res.json({ shop: JSON.parse(shop_shopify.res), order: JSON.parse(order_shopify.res) });
+        res.json({ shop: JSON.parse(shop_shopify.res.shop), orders: JSON.parse(order_shopify.res.orders) });
     } else {
         res.status(400).send('Required parameters missing');
     }
