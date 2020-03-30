@@ -9,7 +9,7 @@ const request = require('request-promise');
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scopes = 'read_products, read_orders';
-const forwardingAddress = "https://dad6a172.ngrok.io"; // Replace this with your HTTPS Forwarding address
+const forwardingAddress = "https://blooming-forest-23519.herokuapp.com"; // Replace this with your HTTPS Forwarding address
 
 app.get('/shopify', (req, res) => {
     const shop = req.query.shop;
@@ -136,7 +136,6 @@ app.get('/shopify/callback', asyncMiddleware(async function (req, res) {
 })
 );
 
-
-app.listen(3000, () => {
-    console.log('mean_easdk app listening on port 3000!');
+app.listen(5000, () => {
+    console.log('mean_easdk app listening on port 5000!');
 });
