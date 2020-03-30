@@ -7,6 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "engines": {
+    "node": "10.x"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
   "author": "roneld",
   "license": "ISC",
   "dependencies": {
@@ -17,8 +25,5 @@
     "nonce": "^1.0.4",
     "request": "^2.88.2",
     "request-promise": "^4.2.5"
-  },
-  "engines": {
-    "node": "10.x"
   }
 }

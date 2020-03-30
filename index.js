@@ -28,6 +28,11 @@ app.get('/shopify', (req, res) => {
         return res.status(400).send('Missing shop parameter. Please add ?shop=your-development-shop.myshopify.com to your request');
     }
 });
+
+app.get('/', (req, res) => {
+    res.status(200).send('Server is running');
+})
+
 const get_data = (shopRequestUrl, shopRequestHeaders) => {
     return new Promise(resolve => {
         request.get(shopRequestUrl, { headers: shopRequestHeaders })
